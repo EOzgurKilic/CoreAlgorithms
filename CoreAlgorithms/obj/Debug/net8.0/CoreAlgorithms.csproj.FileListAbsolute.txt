@@ -1,0 +1,14 @@
+/Users/orkhanrahimli/RiderProjects/CoreAlgorithms/CoreAlgorithms/bin/Debug/net8.0/CoreAlgorithms
+/Users/orkhanrahimli/RiderProjects/CoreAlgorithms/CoreAlgorithms/bin/Debug/net8.0/CoreAlgorithms.deps.json
+/Users/orkhanrahimli/RiderProjects/CoreAlgorithms/CoreAlgorithms/bin/Debug/net8.0/CoreAlgorithms.runtimeconfig.json
+/Users/orkhanrahimli/RiderProjects/CoreAlgorithms/CoreAlgorithms/bin/Debug/net8.0/CoreAlgorithms.dll
+/Users/orkhanrahimli/RiderProjects/CoreAlgorithms/CoreAlgorithms/bin/Debug/net8.0/CoreAlgorithms.pdb
+/Users/orkhanrahimli/RiderProjects/CoreAlgorithms/CoreAlgorithms/obj/Debug/net8.0/CoreAlgorithms.GeneratedMSBuildEditorConfig.editorconfig
+/Users/orkhanrahimli/RiderProjects/CoreAlgorithms/CoreAlgorithms/obj/Debug/net8.0/CoreAlgorithms.AssemblyInfoInputs.cache
+/Users/orkhanrahimli/RiderProjects/CoreAlgorithms/CoreAlgorithms/obj/Debug/net8.0/CoreAlgorithms.AssemblyInfo.cs
+/Users/orkhanrahimli/RiderProjects/CoreAlgorithms/CoreAlgorithms/obj/Debug/net8.0/CoreAlgorithms.csproj.CoreCompileInputs.cache
+/Users/orkhanrahimli/RiderProjects/CoreAlgorithms/CoreAlgorithms/obj/Debug/net8.0/CoreAlgorithms.dll
+/Users/orkhanrahimli/RiderProjects/CoreAlgorithms/CoreAlgorithms/obj/Debug/net8.0/refint/CoreAlgorithms.dll
+/Users/orkhanrahimli/RiderProjects/CoreAlgorithms/CoreAlgorithms/obj/Debug/net8.0/CoreAlgorithms.pdb
+/Users/orkhanrahimli/RiderProjects/CoreAlgorithms/CoreAlgorithms/obj/Debug/net8.0/CoreAlgorithms.genruntimeconfig.cache
+/Users/orkhanrahimli/RiderProjects/CoreAlgorithms/CoreAlgorithms/obj/Debug/net8.0/ref/CoreAlgorithms.dll
