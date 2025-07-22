@@ -113,4 +113,26 @@ public class Algorithms
         return minLength;
     }
     #endregion
+
+    public static void BubbleSort(int[] arr)
+    {
+        //Learn Bubble Sort to understand sorting. Don’t use it in production.
+        //Complexity Rate: O(n^2) quadratic time
+            int n = arr.Length;
+            for (int i = 0; i < n - 1; i++)
+            {
+                for (int j = 0; j < n - 1 - i; j++)
+                {
+                    if (arr[j] > arr[j + 1])
+                    {
+                        // Swap
+                        int temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+        }
+
+    }
 }
