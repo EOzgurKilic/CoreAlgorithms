@@ -1,3 +1,6 @@
+using System.Diagnostics.SymbolStore;
+using System.Text;
+
 namespace CoreAlgorithms;
 
 public class Algorithms
@@ -116,6 +119,9 @@ public class Algorithms
 
     public static void BubbleSort(int[] arr)
     {
+        /*Bubble Sort is a simple comparison-based sorting algorithm.
+        It repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order.
+        This process is repeated until the list is sorted.*/
         //Learn Bubble Sort to understand sorting. Don’t use it in production.
         //Complexity Rate: O(n^2) quadratic time
             int n = arr.Length;
@@ -127,10 +133,144 @@ public class Algorithms
                     {
                         // Swap
                         int temp = arr[j];
-                        arr[j] = arr[j + 1];
+                        arr[j] = arr[j + 1]; 
                         arr[j + 1] = temp;
                     }
                 }
             }
+    }
+
+    public static void SelectionSort(int[] arr)
+    {
+        //Selection Sort divides the array into two parts:
+        //-The sorted part (initially empty)
+        //-The unsorted part (initially the whole array)
+        //It repeatedly selects the minimum element from the unsorted part and swaps it with the first unsorted element.
+        //Time Complexity: O(n^2) quadratic;
+        //Space Complexity: Linear O(1)
+        int temp = 0, minIndex = 0;
+        
+        for (int i = 0; i < arr.Length - 1; i++)
+        {
+            minIndex = i;
+
+            for (int j = i + 1; j < arr.Length; j++)
+            {
+                if (arr[j] < arr[minIndex])
+                {
+                    minIndex = j;
+                }
+            }
+            StringBuilder str = new StringBuilder();
+            if (minIndex != i)
+            {
+                temp = arr[i];
+                arr[i] = arr[minIndex];
+                arr[minIndex] = temp;
+            }
         }
+        
+        // Mini-Exercise
+        /*You are given an array of student scores out of 100.
+        Use Selection Sort to sort the scores in descending order (highest to lowest).
+        Return both the sorted array.
+        Exp Input: int[] scores = { 78, 95, 62, 89, 55 };
+        Expexted Output: Sorted: [95, 89, 78, 62, 55] */
+        /*for (int i = arr.Length - 1; i > 0; i--)
+        {
+            minIndex = i;
+            for (int j = i - 1; j >= 0; j--)
+            {
+                if (arr[j] < arr[minIndex])
+                {
+                    minIndex = j;
+                }
+            }
+
+            if (minIndex != i)
+            {
+                temp = arr[i];
+                arr[i] = arr[minIndex];
+                arr[minIndex] = temp;
+            }
+        }*/
+    }
+    
+    
+    public static void InsertionSort(int[] arr)
+    {
+        //Insertion Sort builds the final sorted array one item at a time. It’s similar to how you might sort playing cards in your hand:
+        //1.Start with the second card.
+        //2.Compare it with the cards before it.
+        //3."Insert" it into its correct position among the sorted ones.
+        //4.Repeat for all cards.
+        
+        for (int i = 1; i < arr.Length; i++)
+        {
+            int key = arr[i];
+            int j = i - 1;
+
+            // Move elements greater than key to one position ahead
+            while (j >= 0 && arr[j] > key)
+            {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+
+            // Place key at its correct position
+            arr[j + 1] = key;
+        }
+        
+        
+        //Mini Exercise
+        /*You are given an array of integers representing a queue of people based on their arrival times.
+        Sort the array in ascending order using Insertion Sort, and return the number of shifts that happened during the sorting process.*/
+        //Exp Output: int[] arrivals = { 8, 4, 3, 7, 6 };
+        //Expected Output: Sorted: [3, 4, 6, 7, 8] Shifts: 6
+        /*int count = 0, temp = 0;
+        int current = 0;
+        for (int i = 1; i < arr.Length; i++)
+        {
+            temp = arr[i];
+            current = i - 1;
+            while (current >= 0 && arr[current] > temp)
+            {
+                arr[current + 1] = arr[current];
+                current--;
+                count++;
+            }
+
+            arr[current + 1] = temp;
+        }
+
+        return count;*/
+    }
+    
+    public static int BoyerMooreVoting(int[] nums)
+    {
+        /*
+         The Boyer-Moore Voting Algorithm
+         
+         It’s a linear-time, constant-space algorithm for finding a majority element in a sequence — an element that appears more than half the time.\
+         It doesn't count elements in full; instead, it uses a cancellation logic to narrow down to the likely winner.
+         Think of it as an election simulator:
+            -Every element "votes" for itself.
+            -Opposing votes cancel each other out.
+            -If one value has an actual majority, it survives the storm.
+        It’s useful in any scenario where:
+            -You expect a majority-like property
+            -You need single-pass, low-memory processing
+         */
+        int potential = 0, counter = 0;
+        foreach (int i in nums)
+        {
+            if(counter == 0){
+                potential = i;
+                counter++;
+            }
+            else
+                counter += potential == i ? 1 : -1;
+        }
+        return potential;
+    }
 }
