@@ -327,7 +327,7 @@ public class Algorithms
         }
     }
 
-    public int[] SortArray(int[] nums)
+    public int[] MergeSort(int[] nums)
     {
         MergeSort(nums, 0, nums.Length - 1);
         return nums;
@@ -400,5 +400,100 @@ public static int BoyerMooreVoting(int[] nums)
                 counter += potential == i ? 1 : -1;
         }
         return potential;
+    }
+
+    public static int[] SortArray(int[] nums) {
+        MergeSort(nums, 0, nums.Length-1);
+        return nums;
+        void MergeSort(int[] arr, int l, int r){
+            if (l == r) return;
+
+            int m = (r + l)/2;
+            MergeSort(arr, l, m);
+            MergeSort(arr, m + 1, r);
+            Merge(arr, l, m, r);
+        }
+        void Merge(int[] arr, int l, int m, int r){
+            int[] left = arr[l..(m+1)];
+            int[] right = arr[(m+1)..(r + 1)];
+            int pt = r;
+            r = right.Length - 1;
+            while(0 <= r){
+                if(m >= l && arr[m] >= right[r])
+                    arr[pt--] = arr[m--];
+                else
+                    arr[pt--] = right[r--];
+            }
+        }
+    }
+
+    public static int[] BucketSort(int[] nums, int k) //https://www.youtube.com/watch?v=YPTqKIgVk-k&t=2s
+    {
+         /*
+        ALGORITHM: Bucket-based Top-K Frequent Elements
+
+        INTUITION
+        ---------
+        - Count how many times each value appears (frequency).
+        - Use an array of "buckets" where the index represents a frequency f, and each bucket
+          holds all values that appear exactly f times.
+        - The maximum possible frequency is nums.Length (all elements are equal), so we need
+          nums.Length + 1 buckets (index 0 unused).
+        - Walk buckets from highest frequency down to lowest and take values until we have k.
+
+        WHEN TO USE
+        -----------
+        - You need the top-k frequent elements from a static array (single pass, no streaming).
+        - n can be large and you want linear time on average/worst (vs sorting all pairs).
+        - You can afford O(n) extra memory (dictionary + buckets).
+
+        COMPLEXITY
+        ----------
+        => Total Time: O(n)
+        => Space: O(n)
+
+        STEP-BY-STEP
+        ------------
+        1) Count occurrences of each value in a Dictionary<int,int> (value -> count).
+        2) Allocate buckets: List<int>[n + 1]; n = nums.Length.
+        3) For each (value, count) pair, add the value to buckets[count].
+        4) Iterate frequency from n down to 1:
+           - If the bucket is not null, append its values to the result until we collect k items.
+        */
+        // 1) Count frequencies
+        var freqMap = new Dictionary<int, int>();
+        foreach (var x in nums)
+        {
+            if (freqMap.TryGetValue(x, out int c)) freqMap[x] = c + 1;
+            else freqMap[x] = 1;
+        }
+
+        // 2) Buckets: index = frequency, value = list of numbers with that frequency
+        var buckets = new List<int>[nums.Length];
+        foreach (var kv in freqMap)
+        {
+            if(buckets[kv.Value - 1] == null) buckets[kv.Value - 1] = new List<int>();
+            buckets[kv.Value - 1].Add(kv.Key);
+        }
+        
+
+        // 3) Collect from highest frequency down
+        var result = new int[k];
+        int idx = 0;
+
+        for (int f = buckets.Length - 1; f >= 0; f--)
+        {
+            var bucket = buckets[f];
+            if (bucket == null) continue;
+
+            // Add all values with this frequency until we fill k
+            for (int i = 0; i < bucket.Count; i++)
+            {
+                result[idx++] = bucket[i];
+                if (idx == k) return result; // early stop
+            }
+        }
+
+        return result; // (Should be filled; loop above early-returns when idx == k)
     }
 }

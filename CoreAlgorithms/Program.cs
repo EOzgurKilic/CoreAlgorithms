@@ -7,13 +7,12 @@ class Program
         //BinarySearch
         /*int[] numbers = {1, 3, 5, 6, 7, 8, 8, 9, 5};
         Console.WriteLine(Algorithms.BinarySearch(numbers, 0));*/
-        int[] arr = new int[]{8,2,5,3,9,4,7,6,1};
-        Algorithms.QuickSort(arr);
-        foreach (var VARIABLE in arr)
+        int[] arr = new int[]{5,2,3,1};
+        Algorithms.SortArray(arr);
+        foreach (int i in arr)
         {
-            Console.WriteLine(VARIABLE);
+            Console.WriteLine(i);
         }
-        
 
     }
 }
