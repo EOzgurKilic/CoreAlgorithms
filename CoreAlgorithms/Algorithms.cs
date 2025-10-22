@@ -5,6 +5,7 @@ namespace CoreAlgorithms;
 
 public class Algorithms
 {
+
     public static int
         BinarySearch(int[] arr,
             int val) //Specifically used to find the index of a certain element in a sorted array if it exists.
